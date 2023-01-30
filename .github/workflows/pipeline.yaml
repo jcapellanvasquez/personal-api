@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Setup maven
-        uses: stCarolas/setup-maven@v4.4
+      - name: Setup Java version 11
+        uses: actions/setup-java@v3
         with:
+          distribution: 'corretto'
           java-version: 11
-          maven-version: 3.8.2
-      - name: maven build api
+      - name: Build api with maven
         run: mvn install
