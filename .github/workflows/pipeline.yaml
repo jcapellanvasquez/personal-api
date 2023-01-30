@@ -1,0 +1,23 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+
+
+jobs:
+  my_first_job:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup maven
+        uses: stCarolas/setup-maven@4.5
+        with:
+          java-version: 11
+          maven-version: 3.8.2
+      - name: maven build api
+        run: mvn install
